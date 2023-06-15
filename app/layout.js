@@ -1,7 +1,9 @@
+import Link from 'next/link'
 import './globals.css'
-import { Inter } from 'next/font/google'
+import { Inter, Space_Grotesk } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
+const font = Space_Grotesk({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Create Next App',
@@ -11,7 +13,18 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${font.className} bg-black text-white`}>
+        <nav className=' z-20 flex fixed w-full justify-center items-center py-4' >
+          <ul className=' cursor-pointer flex gap-4 md:gap-8 lg:gap-10 justify-center items-center w-fit px-1 py-2 border border-[#d6b29163] shadow-lg bg-[#d6b29171] text-[#D9C1B4] ' >
+            <li><Link href='/' className=' p-2 font-bold text-xl ' >bishal.</Link></li>
+            <li><Link href='/about' className=' p-2  ' >about</Link></li>
+            <li><Link href='/projects' className=' p-2  ' >projects</Link></li>
+            <li><Link href='/blogs' className=' p-2  ' >blogs</Link></li>
+            <li className=' my-2 mr-2 '><Link href='/' className=' p-1 px-2 border border-[#D9C1B4] bg-[#D9C1B4] hover:bg-[#e9c8b7] text-[#3b3735] ' >let's talk</Link></li>
+          </ul>
+        </nav>
+      {children}
+      </body>
     </html>
   )
 }
